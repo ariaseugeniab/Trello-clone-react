@@ -6,7 +6,7 @@ const TrelloList = ({ title, cards }) => {
 		<div style={styles.container}>
 			<h3>{title}</h3>
 			{cards.map((card) => (
-				<TrelloCard text={card.text} />
+				<TrelloCard key={card.id} text={card.text} />
 			))}
 		</div>
 	);
@@ -14,9 +14,11 @@ const TrelloList = ({ title, cards }) => {
 
 const styles = {
 	container: {
-		backgroundColor: "#ccc",
+		backgroundColor: "#ebecf0",
 		borderRadius: 3,
 		width: "300px",
+		padding: 8,
+		marginRight: 8,
 	},
 };
 export default TrelloList;

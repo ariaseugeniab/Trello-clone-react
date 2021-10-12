@@ -5,16 +5,18 @@ import Typography from "@mui/material/Typography";
 
 const TrelloCard = ({ text }) => {
 	return (
-		<Card sx={{ minWidth: 275 }}>
+		<Card style={styles.cardContainer} sx={{ minWidth: 275 }}>
 			<CardContent>
-				<Typography variant="body2">
-					{text}
-					<br />
-					{'"a benevolent smile"'}
-				</Typography>
+				<Typography variant="body2">{text}</Typography>
 			</CardContent>
 		</Card>
 	);
+};
+
+const styles = {
+	cardContainer: {
+		marginBottom: 8,
+	},
 };
 
 export default TrelloCard;

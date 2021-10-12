@@ -7,13 +7,21 @@ const initialState = [
 			{ id: 1, text: "other card text!" },
 		],
 	},
+	{
+		title: "title2",
+		id: 1,
+		cards: [
+			{ id: 2, text: "Card1 text!" },
+			{ id: 3, text: "other card text!" },
+		],
+	},
 ];
 
-const listReducer = (state = initialState, action) => {
+const listsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		default:
 			return state;
 	}
 };
 
-export default listReducer;
+export default listsReducer;
