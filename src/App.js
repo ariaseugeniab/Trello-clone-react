@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import "./App.css";
 import TrelloList from "./components/TrelloList";
+import ActionButton from "./components/ActionButton";
 
 function App({ lists }) {
 	// const lists = this.props.lists;
@@ -12,6 +13,7 @@ function App({ lists }) {
 				{lists.map((list) => (
 					<TrelloList key={list.id} title={list.title} cards={list.cards} />
 				))}
+				<ActionButton list={{ value: true }} />
 			</div>
 		</div>
 	);
@@ -22,7 +24,6 @@ const styles = {
 		display: "block",
 	},
 	listsContainer: {
-		backgroundColor: "#294C74",
 		display: "flex",
 		flexDirection: "row",
 		marginRight: 8,
