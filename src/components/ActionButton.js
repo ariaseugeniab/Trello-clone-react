@@ -1,7 +1,6 @@
 import React from "react";
 import { Icon } from "@mui/material";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
 

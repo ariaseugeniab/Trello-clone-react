@@ -3,32 +3,28 @@ import React from "react";
 import "./App.css";
 import TrelloList from "./components/TrelloList";
 import ActionButton from "./components/ActionButton";
+import styled from "styled-components";
 
 function App({ lists }) {
 	// const lists = this.props.lists;
 	return (
 		<div className="App">
 			<h1>Hello!</h1>
-			<div style={styles.listsContainer}>
+			<StyledListContainer>
 				{lists.map((list) => (
 					<TrelloList key={list.id} title={list.title} cards={list.cards} />
 				))}
-				<ActionButton list={{ value: true }} />
-			</div>
+				<ActionButton list />
+			</StyledListContainer>
 		</div>
 	);
 }
 
-const styles = {
-	title: {
-		display: "block",
-	},
-	listsContainer: {
-		display: "flex",
-		flexDirection: "row",
-		marginRight: 8,
-	},
-};
+const StyledListContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	margin-right: 8px;
+`;
 
 const mapStateToProps = (state) => ({
 	lists: state.lists,
