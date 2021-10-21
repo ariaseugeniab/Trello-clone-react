@@ -6,7 +6,7 @@ import styled from "styled-components";
 const TrelloList = ({ title, cards }) => {
 	return (
 		<StyledContainer>
-			<h3>{title}</h3>
+			<StyledTitle>{title}</StyledTitle>
 			{cards.map((card) => (
 				<TrelloCard key={card.id} text={card.text} />
 			))}
@@ -22,6 +22,15 @@ const StyledContainer = styled.div`
 	padding: 8px;
 	margin-right: 8px;
 	height: 100%;
+`;
+
+const StyledTitle = styled.h3`
+	font-weight: 600;
+	color: #172b4d;
+	font-size: 14px;
+	text-align: left;
+	padding: 4px 8px;
+	margin: 0;
 `;
 
 export default TrelloList;

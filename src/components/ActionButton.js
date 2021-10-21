@@ -3,6 +3,8 @@ import { Icon } from "@mui/material";
 import Card from "@mui/material/Card";
 import TextareaAutosize from "react-textarea-autosize";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { addList } from "../actions/listActions";
 
 class ActionButton extends React.PureComponent {
 	state = {
@@ -48,6 +50,15 @@ class ActionButton extends React.PureComponent {
 		);
 	};
 
+	handleAddList = () => {
+		const { dispatch } = this.props;
+		const { text } = this.state;
+
+		if (text) {
+			dispatch(addList(text));
+		}
+	};
+
 	renderForm = () => {
 		const { list } = this.props;
 
@@ -68,7 +79,7 @@ class ActionButton extends React.PureComponent {
 							list ? "Enter list title..." : "Enter a title for this card..."
 						}
 						autoFocus
-						// onBlur={this.closeForm}
+						onBlur={this.closeForm}
 						value={this.state.text}
 						onChange={this.handleInputChange}
 						style={{
@@ -88,7 +99,9 @@ class ActionButton extends React.PureComponent {
 						justifyContent: "flex-start",
 					}}
 				>
-					<StyledButton>{list ? "Add List" : "Add Card"}</StyledButton>
+					<StyledButton onMouseDown={this.handleAddList}>
+						{list ? "Add List" : "Add Card"}
+					</StyledButton>
 					<StyledCancelButton onClick={this.closeForm}>
 						<Icon>close</Icon>
 					</StyledCancelButton>
@@ -143,4 +156,4 @@ const OpenFormButtonGroup = styled.div`
 	padding-left: 10px;
 `;
 
-export default ActionButton;
+export default connect()(ActionButton);
