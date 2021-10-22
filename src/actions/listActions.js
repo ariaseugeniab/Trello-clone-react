@@ -1,8 +1,11 @@
-import { CONSTANTS } from "../actions";
+// import { CONSTANTS } from "../actions";
+import Types from "./types";
 
 export const addList = (title) => {
 	return {
-		type: CONSTANTS.ADD_LIST,
+		type: Types.ADD_LIST,
 		payload: title,
 	};
 };
+
+export default addList;
