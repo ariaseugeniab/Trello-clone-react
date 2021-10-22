@@ -3,7 +3,9 @@ import { Icon } from "@mui/material";
 import Card from "@mui/material/Card";
 import TextareaAutosize from "react-textarea-autosize";
 import { connect } from "react-redux";
-// import { addList, addCard } from "../actions";
+import addCard from "../../actions/cardsAction";
+import addList from "../../actions/listActions";
+
 import {
 	StyledButton,
 	StyledCancelButton,
@@ -58,19 +60,22 @@ class ActionButton extends React.PureComponent {
 		const { dispatch } = this.props;
 		const { text } = this.state;
 
+		console.log("aca va add list", dispatch, text);
 		if (text) {
 			dispatch(addList(text));
+			this.setState({ text: "" });
 		}
 	};
 
 	handleAddCard = () => {
-		const { dispatch, listId } = this.props;
-		const { text } = this.state;
+		console.log("aca es adcard");
+		// const { dispatch, listId } = this.props;
+		// const { text } = this.state;
 
-		if (text) {
-			dispatch(addCard(listId, text));
-			this.setState({ text: "" });
-		}
+		// if (text) {
+		// 	dispatch(addCard(listId, text));
+		// 	this.setState({ text: "" });
+		// }
 	};
 
 	renderForm = () => {

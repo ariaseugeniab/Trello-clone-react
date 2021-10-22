@@ -26,9 +26,6 @@ const initialState = [
 ];
 
 const addCard = (draftState, action) => {
-	// draftState.order = action.data.order;
-	// draftState.orderData = defaultOrderDataValues;
-	// draftState.sensitiveOrderData = {};
 	const newCard = { id: 4, text: action.payload.text };
 	draftState = draftState.map((list) => {
 		if (list.id === action.payload.listId) {
@@ -43,10 +40,9 @@ const addCard = (draftState, action) => {
 };
 
 const addList = (draftState, action) => {
-	// draftState.order = action.data.order;
-	// draftState.orderData = defaultOrderDataValues;
-	// draftState.sensitiveOrderData = {};
-	draftState = [...draftState, { title: action.payload, id: 1, cards: [] }];
+	console.log("este es el reducer", draftState);
+
+	draftState.push({ title: action, id: 1, cards: [] });
 };
 
 // const listsReducer = (state = initialState, action) => {
@@ -78,5 +74,6 @@ const handlers = {
 };
 
 const listReducers = createReducer(initialState, handlers);
+console.log("listReducers", listReducers);
 
 export default listReducers;
