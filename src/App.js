@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import React from "react";
 import "./App.css";
-import TrelloList from "./components/TrelloList";
-import ActionButton from "./components/ActionButton";
+import TrelloList from "./components/TrelloList/TrelloList";
+import ActionButton from "./components/ActionButton/ActionButton";
 import styled from "styled-components";
 
 function App({ lists }) {
@@ -12,7 +12,12 @@ function App({ lists }) {
 			<h1>Hello!</h1>
 			<StyledListContainer>
 				{lists.map((list) => (
-					<TrelloList key={list.id} title={list.title} cards={list.cards} />
+					<TrelloList
+						listId={list.id}
+						key={list.id}
+						title={list.title}
+						cards={list.cards}
+					/>
 				))}
 				<ActionButton list />
 			</StyledListContainer>

@@ -1,4 +1,10 @@
-import { CONSTANTS } from "../actions";
+// import { Types } from "../actions";
+// import storage from "redux-persist/lib/storage";
+// import { persistReducer } from "redux-persist";
+// import { ActionType } from "redux-promise-middleware";
+
+import Types from "../actions/types";
+import createReducer from "./createReducer";
 
 const initialState = [
 	{
@@ -19,16 +25,58 @@ const initialState = [
 	},
 ];
 
-const listsReducer = (state = initialState, action) => {
-	switch (action.type) {
-		// case CONSTANTS.ADD_CARD:
-		// 	return { id: 0, text: "Card1 text!" };
-		case CONSTANTS.ADD_LIST:
-			return [...state, { title: action.payload, id: 1, cards: [] }];
-
-		default:
-			return state;
-	}
+const addCard = (draftState, action) => {
+	// draftState.order = action.data.order;
+	// draftState.orderData = defaultOrderDataValues;
+	// draftState.sensitiveOrderData = {};
+	const newCard = { id: 4, text: action.payload.text };
+	draftState = draftState.map((list) => {
+		if (list.id === action.payload.listId) {
+			return {
+				...list,
+				cards: [...list.cards, newCard],
+			};
+		} else {
+			return list;
+		}
+	});
 };
 
-export default listsReducer;
+const addList = (draftState, action) => {
+	// draftState.order = action.data.order;
+	// draftState.orderData = defaultOrderDataValues;
+	// draftState.sensitiveOrderData = {};
+	draftState = [...draftState, { title: action.payload, id: 1, cards: [] }];
+};
+
+// const listsReducer = (state = initialState, action) => {
+// 	switch (action.type) {
+// 		case Types.ADD_CARD:
+// 			const newCard = { id: 4, text: action.payload.text };
+// 			const newState = state.map((list) => {
+// 				if (list.id === action.payload.listId) {
+// 					return {
+// 						...list,
+// 						cards: [...list.cards, newCard],
+// 					};
+// 				} else {
+// 					return list;
+// 				}
+// 			});
+// 			return newState;
+// 		case Types.ADD_LIST:
+// 			return [...state, { title: action.payload, id: 1, cards: [] }];
+
+// 		default:
+// 			return state;
+// 	}
+// };
+
+const handlers = {
+	[Types.ADD_CARD]: addCard,
+	[Types.ADD_LIST]: addList,
+};
+
+const listReducers = createReducer(initialState, handlers);
+
+export default listReducers;
