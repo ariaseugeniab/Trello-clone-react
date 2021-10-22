@@ -13,6 +13,7 @@ function App({ lists }) {
 			<StyledListContainer>
 				{lists.map((list) => (
 					<TrelloList
+						id={list.id}
 						listId={list.id}
 						key={list.id}
 						title={list.title}

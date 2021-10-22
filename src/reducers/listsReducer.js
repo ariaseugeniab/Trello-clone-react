@@ -1,8 +1,3 @@
-// import { Types } from "../actions";
-// import storage from "redux-persist/lib/storage";
-// import { persistReducer } from "redux-persist";
-// import { ActionType } from "redux-promise-middleware";
-
 import Types from "../actions/types";
 import createReducer from "./createReducer";
 
@@ -26,13 +21,11 @@ const initialState = [
 ];
 
 const addCard = (draftState, action) => {
-	const newCard = { id: 4, text: action.payload.text };
-	draftState = draftState.map((list) => {
-		if (list.id === action.payload.listId) {
-			return {
-				...list,
-				cards: [...list.cards, newCard],
-			};
+	const newCard = { id: 4, text: action.text };
+
+	draftState.map((list) => {
+		if (list.id === action.listId) {
+			return list.cards.push(newCard);
 		} else {
 			return list;
 		}
@@ -40,9 +33,7 @@ const addCard = (draftState, action) => {
 };
 
 const addList = (draftState, action) => {
-	console.log("este es el reducer", draftState);
-
-	draftState.push({ title: action, id: 1, cards: [] });
+	draftState.push({ title: action, id: 2, cards: [] });
 };
 
 // const listsReducer = (state = initialState, action) => {
@@ -74,6 +65,5 @@ const handlers = {
 };
 
 const listReducers = createReducer(initialState, handlers);
-console.log("listReducers", listReducers);
 
 export default listReducers;

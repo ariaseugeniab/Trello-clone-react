@@ -60,7 +60,6 @@ class ActionButton extends React.PureComponent {
 		const { dispatch } = this.props;
 		const { text } = this.state;
 
-		console.log("aca va add list", dispatch, text);
 		if (text) {
 			dispatch(addList(text));
 			this.setState({ text: "" });
@@ -68,14 +67,13 @@ class ActionButton extends React.PureComponent {
 	};
 
 	handleAddCard = () => {
-		console.log("aca es adcard");
-		// const { dispatch, listId } = this.props;
-		// const { text } = this.state;
+		const { dispatch, listId } = this.props;
+		const { text } = this.state;
 
-		// if (text) {
-		// 	dispatch(addCard(listId, text));
-		// 	this.setState({ text: "" });
-		// }
+		if (text) {
+			dispatch(addCard(listId, text));
+			this.setState({ text: "" });
+		}
 	};
 
 	renderForm = () => {
