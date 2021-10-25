@@ -7,16 +7,16 @@ const initialState = [
 		title: "title1",
 		id: 0,
 		cards: [
-			{ id: 0, text: "Card1 text!" },
-			{ id: 1, text: "other card text!" },
+			{ id: 1, text: "Card1 text!" },
+			{ id: 2, text: "other card text!" },
 		],
 	},
 	{
 		title: "title2",
-		id: 1,
+		id: 3,
 		cards: [
-			{ id: 2, text: "Card1 text!" },
-			{ id: 3, text: "other card text!" },
+			{ id: 4, text: "Card1 text!" },
+			{ id: 5, text: "other card text!" },
 		],
 	},
 ];
