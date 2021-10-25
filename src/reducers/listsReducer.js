@@ -1,5 +1,6 @@
 import Types from "../actions/types";
 import createReducer from "./createReducer";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = [
 	{
@@ -21,7 +22,7 @@ const initialState = [
 ];
 
 const addCard = (draftState, action) => {
-	const newCard = { id: 4, text: action.text };
+	const newCard = { id: uuidv4(), text: action.text };
 
 	draftState.map((list) => {
 		if (list.id === action.listId) {
@@ -33,7 +34,7 @@ const addCard = (draftState, action) => {
 };
 
 const addList = (draftState, action) => {
-	draftState.push({ title: action, id: 2, cards: [] });
+	draftState.push({ title: action, id: uuidv4(), cards: [] });
 };
 
 const handlers = {
