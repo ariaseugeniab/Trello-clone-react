@@ -40,3 +40,9 @@ export const OpenFormButtonGroup = styled.div`
 	width: 272px;
 	padding-left: 10px;
 `;
+
+export const ButtonsContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+`;

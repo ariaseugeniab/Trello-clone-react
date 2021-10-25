@@ -36,29 +36,6 @@ const addList = (draftState, action) => {
 	draftState.push({ title: action, id: 2, cards: [] });
 };
 
-// const listsReducer = (state = initialState, action) => {
-// 	switch (action.type) {
-// 		case Types.ADD_CARD:
-// 			const newCard = { id: 4, text: action.payload.text };
-// 			const newState = state.map((list) => {
-// 				if (list.id === action.payload.listId) {
-// 					return {
-// 						...list,
-// 						cards: [...list.cards, newCard],
-// 					};
-// 				} else {
-// 					return list;
-// 				}
-// 			});
-// 			return newState;
-// 		case Types.ADD_LIST:
-// 			return [...state, { title: action.payload, id: 1, cards: [] }];
-
-// 		default:
-// 			return state;
-// 	}
-// };
-
 const handlers = {
 	[Types.ADD_CARD]: addCard,
 	[Types.ADD_LIST]: addList,

@@ -10,6 +10,7 @@ import {
 	StyledButton,
 	StyledCancelButton,
 	OpenFormButtonGroup,
+	ButtonsContainer,
 } from "./ActionButton.styles";
 
 class ActionButton extends React.PureComponent {
@@ -80,14 +81,14 @@ class ActionButton extends React.PureComponent {
 		const { list } = this.props;
 
 		return (
-			<div>
+			<form>
 				<Card
 					sx={{ minWidth: 275 }}
 					style={{
 						overflow: "visible",
 						minHeight: 60,
 						minWidth: 272,
-						padding: "6px 8px 2px",
+						padding: "14px",
 						marginBottom: "8px",
 					}}
 				>
@@ -106,17 +107,19 @@ class ActionButton extends React.PureComponent {
 							borderColor: "transparent",
 							outline: "none",
 							height: "100%",
+							fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+							fontWeight: 400,
+							fontSize: "0.875rem",
+							lineHeight: 1.43,
+							letterSpacing: "0.01071em",
+							color: "#000000DE",
 						}}
 					/>
 				</Card>
-				<div
-					style={{
-						display: "flex",
-						alignContent: "center",
-						justifyContent: "flex-start",
-					}}
-				>
+				<ButtonsContainer>
 					<StyledButton
+						type="submit"
+						onSubmit={list ? this.handleAddList : this.handleAddCard}
 						onMouseDown={list ? this.handleAddList : this.handleAddCard}
 					>
 						{list ? "Add List" : "Add Card"}
@@ -124,8 +127,8 @@ class ActionButton extends React.PureComponent {
 					<StyledCancelButton onClick={this.closeForm}>
 						<Icon>close</Icon>
 					</StyledCancelButton>
-				</div>
-			</div>
+				</ButtonsContainer>
+			</form>
 		);
 	};
 
