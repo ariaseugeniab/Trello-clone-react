@@ -8,4 +8,21 @@ export const addList = (title) => {
 	};
 };
 
-export default addList;
+export const sortList = (
+	droppableIdStart,
+	droppableIdEnd,
+	droppableIndexStart,
+	droppableIndexEnd,
+	draggableId
+) => {
+	return {
+		type: Types.SORT_LIST,
+		payload: {
+			droppableIdStart,
+			droppableIdEnd,
+			droppableIndexEnd,
+			droppableIndexStart,
+			draggableId,
+		},
+	};
+};

@@ -7,5 +7,3 @@ export const addCard = (listId, text) => {
 		payload: { text, listId },
 	};
 };
-
-export default addCard;

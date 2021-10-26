@@ -1,6 +1,6 @@
 import React from "react";
 import ActionButton from "../ActionButton/ActionButton";
-import TrelloCard from "../TrelloCard";
+import TrelloCard from "../TrelloCard/TrelloCard";
 import { Droppable } from "react-beautiful-dnd";
 import { StyledContainer, StyledTitle } from "./TrelloList.styles";
 
@@ -18,8 +18,8 @@ const TrelloList = ({ title, cards, listId }) => {
 							id={card.id}
 						/>
 					))}
-					<ActionButton listId={listId} />
 					{provided.placeholder}
+					<ActionButton listId={listId} />
 				</StyledContainer>
 			)}
 		</Droppable>

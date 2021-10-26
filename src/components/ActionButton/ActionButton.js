@@ -3,8 +3,8 @@ import { Icon } from "@mui/material";
 import Card from "@mui/material/Card";
 import TextareaAutosize from "react-textarea-autosize";
 import { connect } from "react-redux";
-import addCard from "../../actions/cardsAction";
-import addList from "../../actions/listActions";
+import { addCard } from "../../actions/cardsAction";
+import { addList } from "../../actions/listActions";
 
 import {
 	StyledButton,
