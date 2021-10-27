@@ -1,22 +1,23 @@
 import Types from "../actions/types";
 import createReducer from "./createReducer";
 import { v4 as uuidv4 } from "uuid";
+import { current } from "@reduxjs/toolkit";
 
 const initialState = [
 	{
 		title: "title1",
-		id: 0,
+		id: uuidv4(),
 		cards: [
-			{ id: 1, text: "Card1 text!" },
-			{ id: 2, text: "other card text!" },
+			{ id: 1, text: "Card id 1 from list id 0" },
+			{ id: 2, text: "Card id 2 from list id 0" },
 		],
 	},
 	{
 		title: "title2",
-		id: 3,
+		id: uuidv4(),
 		cards: [
-			{ id: 4, text: "Card1 text!" },
-			{ id: 5, text: "other card text!" },
+			{ id: 4, text: "Card id 4 from list id 3" },
+			{ id: 5, text: "Card id 5 from list id 3" },
 		],
 	},
 ];
@@ -46,14 +47,6 @@ const sortList = (draftState, action) => {
 		draggableId,
 	} = action;
 
-	console.log(
-		"droppableIdStart",
-		droppableIdStart,
-		"droppableIdEnd",
-		droppableIdEnd,
-		"droppableIdStart === droppableIdEnd",
-		droppableIdStart === droppableIdEnd
-	);
 	if (droppableIdStart === droppableIdEnd) {
 		draftState.map((list) => {
 			if (droppableIdStart === list.id) {
@@ -64,37 +57,19 @@ const sortList = (draftState, action) => {
 			}
 		});
 	}
-	// if (droppableIdStart !== droppableIdEnd) {
-	// 	// draftState.map((list)=>{
-	// 	// 	const listStart
+	if (droppableIdStart !== droppableIdEnd) {
+		const listStart = draftState.find((list) => droppableIdStart === list.id);
+		const oldIndex = draftState.indexOf(listStart);
+		const cardSelected = draftState[oldIndex].cards.splice(
+			droppableIndexStart,
+			1
+		);
 
-	// 	// })
-	// 	const listStart = draftState.find((list) => list.id === droppableIdStart);
-	// 	const listEnd = draftState.find((list) => list.id === droppableIdEnd);
-
-	// 	//cuando va de uno al otro
-
-	// 	// const card = listStart.cards.splice(droppableIndexStart, 1);
-	// 	// listEnd.cards.splice(droppableIndexEnd, 0, ...card);
-
-	// 	console.log("listStart", listStart, "listEnd", listEnd);
-	// 	// console.log("card", card);
-	// 	// return {
-	// 	// 	...draftState,
-	// 	// 	[droppableIdStart]: listStart,
-	// 	// 	[droppableIdEnd]: listEnd,
-	// 	// };
-
-	// 	// const listStart = state[droppableIdStart];
-	// 	// const card = listStart.cards.splice(droppableIndexStart, 1);
-	// 	// const listEnd = state[droppableIdEnd];
-	// 	// listEnd.cards.splice(droppableIndexEnd, 0, ...card);
-	// 	// return {
-	// 	// 	...state,
-	// 	// 	[droppableIdStart]: listStart,
-	// 	// 	[droppableIdEnd]: listEnd,
-	// 	// };
-	// }
+		// console.log(current(draftState));
+		const listEnd = draftState.find((list) => droppableIdEnd === list.id);
+		const newIndex = draftState.indexOf(listEnd);
+		draftState[newIndex].cards.splice(droppableIndexEnd, 0, ...cardSelected);
+	}
 };
 
 const handlers = {

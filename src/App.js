@@ -26,8 +26,8 @@ function App({ lists }) {
 
 		dispatch(
 			sortList(
-				parseInt(source.droppableId),
-				parseInt(destination.droppableId),
+				source.droppableId,
+				destination.droppableId,
 				parseInt(source.index),
 				parseInt(destination.index),
 				parseInt(draggableId)
