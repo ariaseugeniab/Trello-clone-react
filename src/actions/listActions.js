@@ -13,7 +13,8 @@ export const sortList = (
 	droppableIdEnd,
 	droppableIndexStart,
 	droppableIndexEnd,
-	draggableId
+	draggableId,
+	type
 ) => {
 	return {
 		type: Types.SORT_LIST,
@@ -23,6 +24,7 @@ export const sortList = (
 			droppableIndexEnd,
 			droppableIndexStart,
 			draggableId,
+			type,
 		},
 	};
 };

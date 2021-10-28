@@ -45,7 +45,13 @@ const sortList = (draftState, action) => {
 		droppableIndexStart,
 		droppableIndexEnd,
 		draggableId,
+		type,
 	} = action;
+
+	if (type === "list") {
+		const selectedList = draftState.splice(droppableIndexStart, 1);
+		draftState.splice(droppableIndexEnd, 0, ...selectedList);
+	}
 
 	if (droppableIdStart === droppableIdEnd) {
 		draftState.map((list) => {
@@ -65,7 +71,6 @@ const sortList = (draftState, action) => {
 			1
 		);
 
-		// console.log(current(draftState));
 		const listEnd = draftState.find((list) => droppableIdEnd === list.id);
 		const newIndex = draftState.indexOf(listEnd);
 		draftState[newIndex].cards.splice(droppableIndexEnd, 0, ...cardSelected);
