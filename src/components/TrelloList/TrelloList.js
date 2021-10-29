@@ -9,7 +9,7 @@ import { editListName } from "../../actions/listActions";
 
 const TrelloList = ({ title, cards, listId, index }) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [customTitle, setCustomTitle] = useState("");
+	const [customTitle, setCustomTitle] = useState(title);
 	const dispatch = useDispatch();
 
 	const renderEditInput = (title) => {
@@ -17,7 +17,7 @@ const TrelloList = ({ title, cards, listId, index }) => {
 			<form onSubmit={handleFinishEditing}>
 				<input
 					type="text"
-					value={customTitle ? customTitle : title}
+					value={customTitle}
 					onChange={handleChange}
 					autoFocus
 					onFocus={handleFocus}
@@ -31,9 +31,10 @@ const TrelloList = ({ title, cards, listId, index }) => {
 	};
 
 	const handleFinishEditing = (e) => {
-		// const listId = e.target.
 		setIsEditing(false);
-		dispatch(editListName(customTitle, listId));
+		if (customTitle.length > 0) {
+			dispatch(editListName(customTitle, listId));
+		}
 	};
 	const handleChange = (e) => {
 		e.preventDefault();
