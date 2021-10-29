@@ -28,3 +28,10 @@ export const sortList = (
 		},
 	};
 };
+
+export const editListName = (text, listId) => {
+	return {
+		type: Types.EDIT_LIST_NAME,
+		payload: { text, listId },
+	};
+};

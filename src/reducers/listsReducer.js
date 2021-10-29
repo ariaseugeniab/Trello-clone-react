@@ -77,10 +77,21 @@ const sortList = (draftState, action) => {
 	}
 };
 
+const editListName = (draftState, action) => {
+	const { listId, text } = action;
+
+	draftState.map((list) => {
+		if (list.id === listId) {
+			return (list.title = text);
+		} else return list;
+	});
+};
+
 const handlers = {
 	[Types.ADD_CARD]: addCard,
 	[Types.ADD_LIST]: addList,
 	[Types.SORT_LIST]: sortList,
+	[Types.EDIT_LIST_NAME]: editListName,
 };
 
 const listReducers = createReducer(initialState, handlers);
