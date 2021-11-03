@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import ActionButton from "../ActionButton/ActionButton";
 import TrelloCard from "../TrelloCard/TrelloCard";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import { ListContainer } from "./TrelloList.styles";
+import { ListContainer, StyledInput } from "./TrelloList.styles";
 import CustomTitle from "../CustomTitle/CustomTitle";
 import { editListName } from "../../actions/listActions";
 
@@ -15,7 +15,7 @@ const TrelloList = ({ title, cards, listId, index }) => {
 	const renderEditInput = (title) => {
 		return (
 			<form onSubmit={handleFinishEditing}>
-				<input
+				<StyledInput
 					type="text"
 					value={customTitle}
 					onChange={handleChange}
@@ -33,7 +33,7 @@ const TrelloList = ({ title, cards, listId, index }) => {
 	const handleFinishEditing = (e) => {
 		setIsEditing(false);
 		if (customTitle.length > 0) {
-			dispatch(editListName(customTitle, listId));
+			dispatch(editListName(customTitle, listId, "list"));
 		}
 	};
 	const handleChange = (e) => {

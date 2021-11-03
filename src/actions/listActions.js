@@ -29,9 +29,9 @@ export const sortList = (
 	};
 };
 
-export const editListName = (text, listId) => {
+export const editListName = (text, listId, type) => {
 	return {
 		type: Types.EDIT_LIST_NAME,
-		payload: { text, listId },
+		payload: { text, listId, type },
 	};
 };

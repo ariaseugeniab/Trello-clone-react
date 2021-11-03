@@ -8,16 +8,16 @@ const initialState = [
 		title: "title1",
 		id: uuidv4(),
 		cards: [
-			{ id: 1, text: "Card id 1 from list id 0" },
-			{ id: 2, text: "Card id 2 from list id 0" },
+			{ id: uuidv4(), text: "Card id 1 from list id 0" },
+			{ id: uuidv4(), text: "Card id 2 from list id 0" },
 		],
 	},
 	{
 		title: "title2",
 		id: uuidv4(),
 		cards: [
-			{ id: 4, text: "Card id 4 from list id 3" },
-			{ id: 5, text: "Card id 5 from list id 3" },
+			{ id: uuidv4(), text: "Card id 4 from list id 3" },
+			{ id: uuidv4(), text: "Card id 5 from list id 3" },
 		],
 	},
 ];
@@ -78,13 +78,25 @@ const sortList = (draftState, action) => {
 };
 
 const editListName = (draftState, action) => {
-	const { listId, text } = action;
+	const { listId, text, type } = action;
 
-	draftState.map((list) => {
-		if (list.id === listId) {
-			return (list.title = text);
-		} else return list;
-	});
+	if (type === "list") {
+		draftState.map((list) => {
+			if (list.id === listId) {
+				return (list.title = text);
+			} else return list;
+		});
+	}
+
+	if (type === "card") {
+		draftState.map((list) => {
+			return list.cards.map((card) => {
+				if (card.id === listId) {
+					return (card.text = text);
+				} else return card;
+			});
+		});
+	}
 };
 
 const handlers = {

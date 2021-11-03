@@ -11,10 +11,17 @@ export const ListContainer = styled.div`
 `;
 
 export const StyledInput = styled.input`
-	width: 100%;
+	background-color: #fff;
+	box-shadow: inset 0 0 0 2px #0079bf;
+	width: 90%;
 	border: none;
-	outline-color: blue;
+	outline-color: transparent;
 	border-radius: 3px;
 	margin-bottom: 3px;
-	padding: 5px;
+	padding: 4px 8px;
+
+	&::focus {
+		outline-color: transparent;
+		border: none;
+	}
 `;
